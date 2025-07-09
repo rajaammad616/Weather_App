@@ -7,30 +7,35 @@ const searchButton = document.querySelector("#Btn");
 const Icon = document.querySelector("#icon");
 
 async function getTemp(city) {
-    const response = await fetch(URL + city + `&appid=${Key}`);
-    const data = await response.json();
-    console.log(data);
+   const response = await fetch(`${URL}${city}&appid=${Key}`);
+   if (response.status == 404) {
+      alert("City not found!");
+      return;
+   }
 
-    document.querySelector("#temp").innerHTML = Math.round(data.main.temp) + "°C";
-    document.querySelector("#city").innerHTML = data.name;
-    document.querySelector("#humidity").innerHTML = Math.round(data.main.humidity) + "%";
-    document.querySelector("#wind").innerHTML = Math.round(data.wind.speed) + "km/h";
+   let data = await response.json();
+   console.log(data);
 
-    if (data.weather[0].main === "Rain") {
-        Icon.src = "assets/rains.png";
-    } else if (data.weather[0].main === "Clouds") {
-        Icon.src = "assets/clouds.png";
-    } else if (data.weather[0].main === "Mist") {
-        Icon.src = "assets/mist.png";
-    } else if (data.weather[0].main === "Snow") {
-        Icon.src = "assets/snow.png";
-    } else if (data.weather[0].main === "Drizzle") {
-        Icon.src = "assets/drizzle.png";
-    } else if (data.weather[0].main === "Clear") {
-        Icon.src = "assets/sun.png";
-    }
+   document.querySelector("#temp").innerHTML = Math.round(data.main.temp) + "°C";
+   document.querySelector("#city").innerHTML = data.name;
+   document.querySelector("#humidity").innerHTML = Math.round(data.main.humidity) + "%";
+   document.querySelector("#wind").innerHTML = Math.round(data.wind.speed) + " km/h";
+
+   if (data.weather[0].main == "Rain") {
+      Icon.src = "assets/rain.png";
+   } else if (data.weather[0].main == "Clouds") {
+      Icon.src = "assets/clouds.png";
+   } else if (data.weather[0].main == "Mist") {
+      Icon.src = "assets/mist.png";
+   } else if (data.weather[0].main == "Snow") {
+      Icon.src = "assets/snow.png";
+   } else if (data.weather[0].main == "Drizzle") {
+      Icon.src = "assets/drizzle.png";
+   } else if (data.weather[0].main == "Clear") {
+      Icon.src = "assets/sun.png";
+   }
 }
 
 searchButton.addEventListener("click", () => {
-    getTemp(input.value);
+   getTemp(input.value);
 });
