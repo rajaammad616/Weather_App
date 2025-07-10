@@ -1,4 +1,5 @@
 **Weather App**   https://weather-app-three-sand-65.vercel.app/
+
 A simple and responsive Weather App built using HTML, CSS, and JavaScript. This app fetches real-time weather data from the OpenWeatherMap API and displays it based on the city name entered by the user.
 
 **Features**
