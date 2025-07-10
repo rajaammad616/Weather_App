@@ -1,5 +1,4 @@
-import Key from "./config.js";
-
+const Key = "YOUR_API_KEY";
 const URL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
 const input = document.querySelector("#searchByCity");
@@ -18,8 +17,8 @@ async function getTemp(city) {
 
    document.querySelector("#temp").innerHTML = Math.round(data.main.temp) + "°C";
    document.querySelector("#city").innerHTML = data.name;
-   document.querySelector("#humidity").innerHTML = Math.round(data.main.humidity) + "%";
-   document.querySelector("#wind").innerHTML = Math.round(data.wind.speed) + " km/h";
+   document.querySelector(".humidity").innerHTML = Math.round(data.main.humidity) + "%";
+   document.querySelector(".Wind").innerHTML = Math.round(data.wind.speed) + " km/h";
 
    if (data.weather[0].main == "Rain") {
       Icon.src = "assets/rain.png";
@@ -38,4 +37,10 @@ async function getTemp(city) {
 
 searchButton.addEventListener("click", () => {
    getTemp(input.value);
+});
+
+input.addEventListener("keyup", (event) => {
+    if (event.key == "Enter") {
+        getTemp(input.value);
+    }
 });
