@@ -3,39 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather App</title>
+    <link rel="icon" href="assets/sun.png" type="image/png">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
+    <main class="container">
       <div class="SearchCity">
         <input type="text" placeholder="Enter Your City:" spellcheck="false" id="searchByCity" />
         <button id="Btn">
           <img src="assets/search.png" alt="Search Button" />
         </button>
       </div>
-      <div class="weatherDetail">
-        <h1 id="temp">23°C</h1>
-        <img class="icon" id="icon" src="assets/rain.png" alt="Rain" />
-        <h2 id="city">Islamabad</h2>
+      <div class="weather">
+        <img class="icon" id="icon" src="assets/rain.png" alt="Weather Icon" />
+        <h1 id="temp">22°C</h1>
+        <h2 id="city">New York</h2>
         <div class="extra">
           <div class="extraColumn">
-            <img src="assets/humidity.png" alt="" />
+            <img src="assets/humidity.png" alt="Humidity Icon" />
             <div>
-              <p class="humidity" id="humidity">50%</p>
+              <p class="humidity">50%</p>
               <p>Humidity</p>
             </div>
           </div>
           <div class="extraColumn">
-            <img src="assets/wind.png" alt="" />
+            <img src="assets/wind.png" alt="Wind Speed Icon" />
             <div>
-              <p class="Wind" id="wind">15 km/h</p>
+              <p class="Wind">15 km/h</p>
               <p>Wind Speed</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </main>
   </body>
   <script src="script.js"></script>
 </html>
